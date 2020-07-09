@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Tournaments</title>
+</head>
+<body>
+<div class="container">
+    <h3>Scheduled Tournaments</h3>
+
+
+    <div class="col-md-12">
+        <a th:href="@{/tournaments/add}" class="btn btn-primary">Add new Tournament</a>
+    </div>
+    <br>
+
+    <div th:switch="tournaments">
+        <div th:case="*">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Teams</th>
+                    <th scope="col">Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="tournament : ${tournaments}">
+                    <td th:text="${tournament.name}"></td>
+                    <td th:text="${tournament.country}"></td>
+                    <td th:text="${tournament.location}"></td>
+                    <td>
+                        <a class="btn btn-info" th:href="@{/tournament/{id}/teams (id=${tournament.id})}" >See Teams</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/tournaments/{id} (id=${tournament.id})}" >Go to Tournament</a>
+                        <a class="btn btn-success" th:href="@{/tournaments/edit/{id} (id=${tournament.id})}" >Edit</a>
+                        <a class="btn btn-danger"  th:href="@{/tournaments/delete/{id} (id=${tournament.id})}" >Delete</a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

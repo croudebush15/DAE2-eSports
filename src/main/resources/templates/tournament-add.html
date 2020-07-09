@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Tournaments</title>
+</head>
+<body>
+
+    <div class="container">
+        <h3>Add Tournament </h3>
+        <div>
+            <form action="#" method="post"
+                  th:object="${tournament}"
+                  th:action="@{/tournaments/save}">
+
+                <div class="form-group">
+                    <label for="name">Name Tournament: </label>
+                    <input type="text" class="form-control" id="name"
+                           th:field="*{name}" placeholder="Enter the name">
+                </div>
+                <div class="form-group">
+                    <label for="country">Country: </label>
+                    <input type="text" class="form-control" id="country"
+                           th:field="*{country}" placeholder="Enter the country">
+                </div>
+                <div class="form-group">
+                    <label for="location">Location: </label>
+                    <input type="text" class="form-control" id="location"
+                           th:field="*{location}" placeholder="Enter the location">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Add new tournament
+                </button>
+
+            </form>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

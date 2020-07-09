@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Update Team</title>
+</head>
+<body>
+<div class="container">
+    <h3>Update Team</h3>
+
+    <div>
+        <form action="#" method="post"
+              th:object="${team}"
+              th:action="@{/teams/update/{idTeam} (idTeam=${team.idTeam})}"
+        >
+
+            <div class="form-group">
+                <label for="nameTeam">Team Name</label>
+                <input type="text" class="form-control" id="nameTeam" th:field="*{nameTeam}">
+            </div>
+            <div class="form-group">
+                <label for="countryTeam">Team Country</label>
+                <input type="text" class="form-control" id="countryTeam" th:field="*{countryTeam}">
+            </div>
+            <div class="form-group">
+                <select class="form-control" th:field="*{tournament_id}"  id="tournament_id">
+                    <option value="0">Select Tournament To Participate</option>
+                    <option th:each="tournament : ${tournaments}" th:value="${tournament.id}" th:text="${tournament.name}"></option>
+                </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">
+                Update Team
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
